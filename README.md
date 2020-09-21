@@ -1,2 +1,2 @@
 # DS-oj
-Some data struct most commonly used by
+Some data struct most commonly used by golang
