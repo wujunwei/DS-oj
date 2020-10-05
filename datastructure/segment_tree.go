@@ -1,4 +1,4 @@
-package data_struct
+package datastructure
 
 type Segment struct {
 	lazy       int
@@ -63,6 +63,15 @@ func NewSegment(l int, r int, a []int) *Segment {
 		return &Segment{l: l, r: r, val: a[l]}
 	}
 	var s = &Segment{0, l, r, 0, NewSegment(l, (l+r)/2, a), NewSegment((l+r)/2+1, r, a)}
+	s.val = s.leftChild.val + s.rightChild.val
+	return s
+}
+
+func NewSegmentWithOutArray(l int, r int) *Segment {
+	if l == r {
+		return &Segment{l: l, r: r}
+	}
+	var s = &Segment{0, l, r, 0, NewSegmentWithOutArray(l, (l+r)/2), NewSegmentWithOutArray((l+r)/2+1, r)}
 	s.val = s.leftChild.val + s.rightChild.val
 	return s
 }
