@@ -1,4 +1,4 @@
-package sample
+package datastructure
 
 type myHeap struct {
 	arr []int
