@@ -2,7 +2,7 @@ package datastructure
 
 type Trie struct {
 	path     string
-	children map[byte]*Trie
+	children [26]*Trie
 	isWord   bool
 }
 
@@ -11,7 +11,7 @@ func Find(t *Trie, a string) []string {
 		if t.children[a[i]] == nil {
 			return []string{}
 		}
-		t = t.children[a[i]]
+		t = t.children[a[i]-'a']
 	}
 	return t.GetAll()
 }
@@ -28,14 +28,14 @@ func (t Trie) GetAll() []string {
 }
 
 func BuildTrie(dict []string) *Trie {
-	t := &Trie{children: map[byte]*Trie{}}
+	t := &Trie{}
 	for _, s := range dict {
 		temp := t
 		for i := 0; i < len(s); i++ {
-			if temp.children[s[i]] == nil {
-				temp.children[s[i]] = &Trie{children: map[byte]*Trie{}}
+			if temp.children[s[i]-'a'] == nil {
+				temp.children[s[i]-'a'] = &Trie{}
 			}
-			temp = temp.children[s[i]]
+			temp = temp.children[s[i]-'a']
 		}
 		temp.path = s
 		temp.isWord = true
