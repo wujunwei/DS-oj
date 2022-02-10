@@ -10,6 +10,7 @@ func check(s string, n int) int {
 	for i := n; i > 0; i >>= 1 {
 		if i&1 != 0 {
 			pow *= sq
+			pow %= mod
 		}
 		sq = sq * sq
 		sq %= mod
