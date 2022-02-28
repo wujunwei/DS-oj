@@ -8,7 +8,7 @@ type Trie struct {
 
 func Find(t *Trie, a string) []string {
 	for i := 0; i < len(a); i++ {
-		if t.children[a[i]] == nil {
+		if t.children[a[i]-'a'] == nil {
 			return []string{}
 		}
 		t = t.children[a[i]-'a']
